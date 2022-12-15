@@ -37,7 +37,10 @@
       </div>
     </div>
 
-    <button @click="tarefaStore.$reset">Limpar Tarefas</button>
+  <!-- botao de reiniciar tarefas (até um reload na pagina) -->
+  <div class="limpar-tarefas">
+    <button @click="tarefaStore.$reset" >Limpar Tarefas</button>
+  </div>
   </main>
 </template>
 
@@ -55,8 +58,7 @@ export default {
   setup() {
     const tarefaStore = useTarefaStore();
 
-    const { tarefas, loading, favs, total, contadorfav } =
-      storeToRefs(tarefaStore);
+    const { tarefas, loading, favs, total, contadorfav } = storeToRefs(tarefaStore);
 
     // fetch tarefas
     tarefaStore.pegaTarefas();

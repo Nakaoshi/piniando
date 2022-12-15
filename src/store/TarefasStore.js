@@ -8,14 +8,18 @@ export const useTarefaStore = defineStore("tarefasStore", {
   getters
   --------------------------------*/
   getters: {
+    // pegando só os favoritos = true 
     favs() {
       return this.tarefas.filter((t) => t.fav);
     },
+    
+    // pegando a quantidade de favoritos
     contadorfav() {
       return this.tarefas.reduce((p, c) => {
         return c.fav ? p + 1 : p;
       }, 0);
     },
+    // pegando o total de tarefas em geral 
     total: (state) => {
       return state.tarefas.length;
     },
@@ -25,6 +29,7 @@ export const useTarefaStore = defineStore("tarefasStore", {
   actions
   --------------------------------*/
   actions: {
+    // get de um json local no json-server 
     async pegaTarefas(){
       this.loading = true;
 
@@ -36,6 +41,8 @@ export const useTarefaStore = defineStore("tarefasStore", {
 
       this.loading = false;
     },
+
+    // post de um json local  no json-server
    async addTarefa(tarefa) {
       this.tarefas.push(tarefa);
 
@@ -51,6 +58,7 @@ export const useTarefaStore = defineStore("tarefasStore", {
 
     },
 
+    // delete de um json local no json-server
     async deletarTarefa(id) {
       this.tarefas = this.tarefas.filter((t) => {
         return t.id !== id;
@@ -65,6 +73,7 @@ export const useTarefaStore = defineStore("tarefasStore", {
       }
       
     },
+    // patch de um json local no json-server
     async favoritar(id) {
       const tarefa = this.tarefas.find((t) => t.id === id);
       tarefa.fav = !tarefa.fav;
