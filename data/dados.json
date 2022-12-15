@@ -1,0 +1,24 @@
+{
+  "tarefas": [
+    {
+      "id": 1,
+      "titulo": "Estudar Pinia",
+      "fav": false
+    },
+    {
+      "id": 2,
+      "titulo": "Jogar Videojogos",
+      "fav": false
+    },
+    {
+      "id": 3,
+      "titulo": "Corno",
+      "fav": false
+    },
+    {
+      "titulo": "ss",
+      "fav": false,
+      "id": 826
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+body {
+  background: #f2f2f2;
+  color: #444;
+  margin: 0;
+}
+body * {
+  font-family: "Poppins";
+}
+
+/* header */
+header {
+  text-align: center;
+  background: #e7e7e7;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header img {
+  max-width: 60px;
+  transform: rotate(-10deg);
+}
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  padding-top: 25px;
+  margin-left: 15px;
+  color: #777;
+  transform: rotate(2deg);
+}
+
+/* lista de tarefas  */
+
+.tarefas-lista{
+  max-width: 640px;
+  margin:20px auto;
+}
+.tarefa{
+  padding:6px 20px;
+  background:#FFF;
+  margin-top:20px;
+  border-radius:4px;
+  box-shadow: 2px 4px 6px rgba(0,0,0,.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tarefa h3, .tarefa .icon{
+  display: inline-block;
+}
+.tarefa .icon{
+  text-align: right;
+}
+.tarefa i {
+  font-size: 1.4rem;
+  margin-left:6px;
+  cursor: pointer;
+  color: #bbb;
+}
+.tarefa i.fav{
+  color: #ff005d;
+}
+
+/* filtro  */
+
+.filtro{
+  width:640px;
+  margin:10px auto;
+  text-align:right;
+}
+.filtro button{
+  display:inline-block;
+  margin-left:10px;
+  background:#FFF;
+  border: 2px solid #555;
+  border-radius:4px;
+  padding:4px 8px;
+  cursor:pointer;
+  font-size:1em;
+}
+
+/* formulario de adicionar tarefas */
+
+.nova-tarefa-form{
+  background:#e7e7e7;
+  padding:20px 0;
+}
+
+form {
+  max-width:400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap:10px;
+}
+form button{
+  background:#ffd859;
+  border:0;
+  font-family:"Poppins";
+  border-radius:6px;
+  cursor: pointer;
+  font-size:1em;
+}
+form input {
+  border:0;
+  padding: 10px;
+  
+  border-radius:6px;
+  color:#555;
+  font-size:1em;
+}
+
+
+/* loading */
+
+.loading{
+  max-width: 640px;
+  border:1px solid #ffd859;
+  background:#ffe9a0;
+  color:#3a3a3a;
+  padding:5px 0;
+  text-align:center;
+  margin: 30px auto; 
+}

@@ -1,0 +1,83 @@
+import { defineStore } from "pinia";
+export const useTarefaStore = defineStore("tarefasStore", {
+  state: () => ({
+    tarefas: [],
+    loading:false,
+  }),
+   /*--------------------------------
+  getters
+  --------------------------------*/
+  getters: {
+    favs() {
+      return this.tarefas.filter((t) => t.fav);
+    },
+    contadorfav() {
+      return this.tarefas.reduce((p, c) => {
+        return c.fav ? p + 1 : p;
+      }, 0);
+    },
+    total: (state) => {
+      return state.tarefas.length;
+    },
+  },
+
+  /*--------------------------------
+  actions
+  --------------------------------*/
+  actions: {
+    async pegaTarefas(){
+      this.loading = true;
+
+
+      const res = await fetch('http://localhost:3000/tarefas')
+      const data = await res.json();
+      this.tarefas = data;
+
+
+      this.loading = false;
+    },
+   async addTarefa(tarefa) {
+      this.tarefas.push(tarefa);
+
+      const res = await fetch('http://localhost:3000/tarefas', {
+        method:'POST',
+        body: JSON.stringify(tarefa),
+        headers:{'Content-Type' : 'application/json'}
+      });
+
+      if(res.error){
+        console.log(res.error)
+      }
+
+    },
+
+    async deletarTarefa(id) {
+      this.tarefas = this.tarefas.filter((t) => {
+        return t.id !== id;
+      });
+
+      const response = await fetch(`http://localhost:3000/tarefas/${id}`,{
+        method:'DELETE',
+      });
+
+      if(response.error){
+        console.log(response.error)
+      }
+      
+    },
+    async favoritar(id) {
+      const tarefa = this.tarefas.find((t) => t.id === id);
+      tarefa.fav = !tarefa.fav;
+
+      const response = await fetch('http://localhost:3000/tarefas/' + id, {
+        method:'PATCH',
+        body: JSON.stringify({fav: tarefa.fav}) ,
+        headers:{'Content-Type': 'application/json'}
+      });
+
+      if(response.error){
+        console.log(response.error)
+      }
+    },
+  },
+});
